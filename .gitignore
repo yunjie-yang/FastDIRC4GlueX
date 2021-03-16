@@ -2,6 +2,7 @@ fastdirc_exe
 fastdirc_exe.dSYM
 *.root
 *.csv
+!geometry_files/*.csv
 src/*.d
 src/*.so
 src/*.pcm
