@@ -1,0 +1,16 @@
+ GEOMETRY_INFILE   'geometry_files/FastDIRC_HDDS_Nominal.csv'
+ GEOMETRY_OUTFILE  'dirc_model_nominal.csv'
+
+ n_phi_phots 12500
+
+c Ntracks 1
+ Ntracks -1
+ Ntracks_pion 500
+ Ntracks_kaon 100
+
+ DIRCTREE_INFILE '/Users/yunjiey/Documents/GlueX/DIRC/DIRC_trees/tree_selected_071228.root'
+ OUTFILE 'output_hists_071228.root'
+
+
+
+ END

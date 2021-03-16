@@ -1,0 +1,9 @@
+fastdirc_exe
+fastdirc_exe.dSYM
+*.root
+*.csv
+src/*.d
+src/*.so
+src/*.pcm
+plots/*.pdf
+macros/*.csv
