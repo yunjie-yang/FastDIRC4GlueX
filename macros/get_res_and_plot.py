@@ -18,7 +18,6 @@ rootfile = "../output_hists_example.root"
 
 momentum = 3.
 
-
 plot_label = label + "_" + hist_type
 
 plotdir  = "../output_plots"

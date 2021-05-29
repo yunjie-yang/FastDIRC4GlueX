@@ -9,5 +9,4 @@ src/*.so
 src/*.pcm
 lib/*.o
 output_plots/*.pdf
-!output_plots
 macros/*.csv
