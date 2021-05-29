@@ -40,4 +40,14 @@ $ python get_res_and_plot.py
 ```
 This creates a csv file in the top directory and some plots in the output_plots directory. The `get_res_and_plot.py` has some configurable labels and runs two root macros: `graphicHistos.C` which computes the equivalent per-track resolution and `draw_DLLs_arg.C` which draws the DLL plots.
 
-# Core FastDIRC functions
+# FastDIRC workflow
+A typical FastDIRC reconstruction workflow has the following steps, using `fastdirc_tree_minimal.cpp` as an example:
+1. Read in the config file, define histograms, and initialize the tree reader
+2. For each particle, read in the track and event information in GlueX hall coordinates; convert these into the internal FastDIRC coordinates using the `convert_particle_kinematics_with_offsets` function (see GlueX-doc-4922 for a graphical representation of the mapping)
+3. Generate the support points under each particle hypothesis via the `sim_reg_n_photons` function -- this is the portal to the simulation part of FastDIRC; more on this function later;
+4. Get the observed hit information, including also a conversion from the channel number to internal FastDIRC coordinates on the PMT plane, via the `undigitize_point` function of the digitizer
+5. Compute the log-likelihoods (LLs) using the `get_log_likelihood` function of a `DircSpreadGaussianNew` instance; the `get_log_likelihood` function takes as inputs the observed hits ("tree_points") and the support points (generated from `sim_reg_n_photons` under different particle hypotheses) and output the log-likelihood of the observed hits under each particle hypothesis; the differences of those LLs can be formed and analyzed later.
+6. In the analysis of those DLLs, `graphicHistos.C` constructs the ROC curve, computes the AUC, and asks what per-track resolution this AUC corresponds to, if it was from two Gaussians separated by the expected Cherenkov angle difference (given the track momentum and the refraction index).
+
+### Applying offsets and rotations
+In FastDIRC, offsets and rotations are defined _with respect to the nominal model_. The `fastdirc_tree_full_KinBins.cpp` driver shows an example of some available offsets and rotations and how to apply them. The offsets and rotations are set via a bunch of `set_offsets_*` functions defined in `src/dirc_base_sim` for those related to the bar boxes as well as bar box-optical box relative offsets, or in `src/dirc_threesegbox_sim` for those related to the optical box. 

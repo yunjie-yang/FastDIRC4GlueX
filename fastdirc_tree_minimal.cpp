@@ -58,7 +58,7 @@ int main(int nargs, char* argv[])
   double particle_y = 0;
   double particle_theta = 4;
   double particle_phi = 40;
-	double particle_bar = 1;
+  double particle_bar = 1;
 
   double ckov_unc = .003*57.3; //transport = 3mrad
   double pdf_unc_red_fac = 1;
@@ -311,7 +311,7 @@ int main(int nargs, char* argv[])
       particle_pid_tree      = evt->GetPdg();
 
       particle_bar_tree      = int(evt->GetId());
-      particle_x_tree     = particle_x3_tree.X();
+      particle_x_tree        = particle_x3_tree.X();
 
       particle_mom_tree      = particle_p3_tree.Mag();
 
@@ -336,7 +336,7 @@ int main(int nargs, char* argv[])
         else
         	hTrackOccupancy_pion->Fill(particle_x_tree,particle_bar_tree);
       }
-			if (locBin_PID == 1) {
+      if (locBin_PID == 1) {
         hInvMass_phi            -> Fill(locInvMass);
         hMissingMassSquared_phi -> Fill(locMissingMassSquared);
         hChiSq_phi              -> Fill(locChiSq);
@@ -382,7 +382,7 @@ int main(int nargs, char* argv[])
       // ------ Passed All Selection -------- //
       counter++;
 
-      // -------- Generate PDFs -------------------//
+      // -------- Generate support points -------------------//
 
       pion_beta = dirc_model->get_beta_from_p(particle_momentum,pimass);
       kaon_beta = dirc_model->get_beta_from_p(particle_momentum,kmass);
