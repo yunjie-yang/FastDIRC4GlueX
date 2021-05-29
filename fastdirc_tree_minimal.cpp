@@ -203,7 +203,6 @@ int main(int nargs, char* argv[])
   //-------------- INITIALIZE TREE --------------------//
 
   bool locSouthLower = true;
-  bool locSelectedRegion = false;
 
   int locBin_PID = -1;
   int locBin_X   = -1;
@@ -235,13 +234,6 @@ int main(int nargs, char* argv[])
   std::vector<dirc_point> tree_points;
 
   int counter = 0;
-
-  bool locPassMMS            = false;
-  bool locPassInvMass        = false;
-  bool locPassChiSq          = false;
-  bool locPassTofTrackDist   = false;
-  bool locPassTofTrackDeltaT = false;
-  bool locPassDcHits         = false;
 
 
   TChain* event_chain = new TChain("dirc");
@@ -283,18 +275,9 @@ int main(int nargs, char* argv[])
             break;
 
     for (int particle_i = 0; particle_i < particle_array->GetEntriesFast(); particle_i++) {
-      locPassMMS            = false;
-      locPassInvMass        = false;
-      locPassChiSq          = false;
-      locPassTofTrackDist   = false;
-      locPassTofTrackDeltaT = false;
-      locPassDcHits         = false;
-
-      locGoodParticle = false;
+      locGoodParticle         = false;
 
       locSouthLower           = true;
-
-      locSelectedRegion       = false;
 
       evt      = (DrcEvent*) particle_array->At(particle_i);
 
@@ -356,12 +339,6 @@ int main(int nargs, char* argv[])
       if (locBin_PID == 1 && Ntracks_kaon > 0 && track_kaon_i >= Ntracks_kaon) continue;
 
       // ------- Applying Selection  --------//
-      locBin_Bar = particle_bar_tree;
-      locBin_X   = hTrackOccupancy_pion -> GetXaxis() -> FindBin(particle_x_tree) - 1;
-
-      if (locBin_Bar >= 3 && locBin_Bar <= 8 && locBin_X >= 18 && locBin_X <= 21) locSelectedRegion = true;
-      if (locBin_Bar >= 27 && locBin_Bar <= 32 && locBin_X >= 18 && locBin_X <= 21) locSelectedRegion = true;
-
       if (particle_bar_tree <= 23) locSouthLower = true;
       else locSouthLower = false;
 

@@ -1,4 +1,4 @@
-CFLAGS_BASE = -O3 -mtune=native -Wno-comment -rpath $(ROOTSYS)/lib -L ./lib/ `root-config --cflags` `root-config --glibs` -lMinuit
+CFLAGS_BASE = -O3 -mtune=native -Wno-comment -L ./lib/ `root-config --cflags` `root-config --glibs` -lMinuit
 CFLAGS_OPT = -g
 CFLAGS_BASE += $(CFLAGS_OPT)
 INCLUDE = -I./src/
