@@ -43,7 +43,7 @@ double find_sig_val(double seperation, double roc_integral, double sig_start, do
 
 	return cur_sig;
 }
-double runGraphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "output_csv", bool verbose_out=true, double imomentum = 4, int iupdown = 0, string labelplot= "label",string plotdir = "./", string hist_type = "tree", string run_type = "topdir", string extra_label = "SouthLower")
+double runGraphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "output_csv", bool verbose_out=true, double imomentum = 4, int iupdown = 0, string labelplot= "label",string plotdir = "./", string hist_type = "tree", string run_type = "topdir")
 {
 
 	TCanvas*c1 = new TCanvas();
@@ -103,23 +103,6 @@ double runGraphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "outp
 			hkaon = (TH1F*) f1->Get(("ll_diff_kaon_" + hist_type).c_str());
 			fhpion = (TH1F*) f1->Get(("ll_diff_pion_" + hist_type).c_str());
 			fhkaon = (TH1F*) f1->Get(("ll_diff_kaon_" + hist_type).c_str());
-		}
-		if (run_type == "KinBins_all")
-		{
-			hpion = (TH1F*) f1->Get(("Integrated/ll_diff_pion_" + hist_type).c_str());
-			hkaon = (TH1F*) f1->Get(("Integrated/ll_diff_kaon_" + hist_type).c_str());
-			fhpion = (TH1F*) f1->Get(("Integrated/ll_diff_pion_" + hist_type).c_str());
-			fhkaon = (TH1F*) f1->Get(("Integrated/ll_diff_kaon_" + hist_type).c_str());
-		}
-		if (run_type == "KinBins_separate")
-		{
-			locHistName = Form("Integrated/ll_diff_pion_%s_%s",hist_type.c_str(),extra_label.c_str());
-			hpion = (TH1F*) f1->Get(locHistName.c_str());
-			locHistName = Form("Integrated/ll_diff_kaon_%s_%s",hist_type.c_str(),extra_label.c_str());
-			hkaon = (TH1F*) f1->Get(locHistName.c_str());
-
-			fhpion = (TH1F*) f1->Get(("Integrated/ll_diff_pion_" + hist_type + "_" + extra_label).c_str());
-			fhkaon = (TH1F*) f1->Get(("Integrated/ll_diff_kaon_" + hist_type + "_" + extra_label).c_str());
 		}
 	}
 	else if (iupdown == 1)
@@ -473,7 +456,7 @@ double runGraphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "outp
 
 }
 
-void graphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "output_csv", bool verbose_out = true, double imomentum = 4, int updown=0, string labelplot= "", string plotdir = ".", string hist_type = "tree", string run_type = "topdir", string extra_label = "SouthLower")
+void graphicHistos(TString ifile = "tmpfitdirc.root", TString ofile = "output_csv", bool verbose_out = true, double imomentum = 4, int updown=0, string labelplot= "", string plotdir = ".", string hist_type = "tree", string run_type = "topdir")
 {
-	runGraphicHistos(ifile, ofile, verbose_out,imomentum,updown,labelplot,plotdir,hist_type,run_type,extra_label);
+	runGraphicHistos(ifile, ofile, verbose_out,imomentum,updown,labelplot,plotdir,hist_type,run_type);
 }

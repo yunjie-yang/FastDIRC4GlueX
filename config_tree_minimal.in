@@ -8,8 +8,8 @@ c Ntracks 1
  Ntracks_pion 500
  Ntracks_kaon 100
 
- DIRCTREE_INFILE '/Users/yunjiey/Documents/GlueX/DIRC/DIRC_trees/tree_selected_071228.root'
- OUTFILE 'output_hists_071228.root'
+ DIRCTREE_INFILE 'tree_example.root'
+ OUTFILE 'output_hists_example.root'
 
 
 

@@ -502,13 +502,13 @@ int main(int nargs, char* argv[])
 	TH1F* hMap_Nph_kaon_sim[NumPBins][NumBars][NumXBins];
 
 	// t dist.
-        TH1F* hMap_hit_dist_t_pion_near_tree[NumPBins][NumBars][NumXBins];
-        TH1F* hMap_hit_dist_t_kaon_near_tree[NumPBins][NumBars][NumXBins];
-        TH1F* hMap_hit_dist_t_pion_away_tree[NumPBins][NumBars][NumXBins];
-        TH1F* hMap_hit_dist_t_kaon_away_tree[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_pion_near_tree[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_kaon_near_tree[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_pion_away_tree[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_kaon_away_tree[NumPBins][NumBars][NumXBins];
 
-        TH1F* hMap_hit_dist_t_pion_sim[NumPBins][NumBars][NumXBins];
-        TH1F* hMap_hit_dist_t_kaon_sim[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_pion_sim[NumPBins][NumBars][NumXBins];
+  TH1F* hMap_hit_dist_t_kaon_sim[NumPBins][NumBars][NumXBins];
 
 	// (x,y) dist.
 	TH2F* hMap_hit_dist_rowcol_pion_near_tree[NumPBins][NumBars][NumXBins];
@@ -743,12 +743,12 @@ int main(int nargs, char* argv[])
 	bool locPassDcHits         = false;
 
 
-        TChain* event_chain = new TChain("dirc");
-        event_chain -> Add(dirctree_filename);
-        DrcEvent* evt = new DrcEvent();
-        TClonesArray* particle_array = new TClonesArray("DrcEvent");
-        event_chain->SetBranchAddress("DrcEvent", &particle_array);
-        printf("\n\n Total Entries = %d\n",int(event_chain->GetEntries()));
+  TChain* event_chain = new TChain("dirc");
+  event_chain -> Add(dirctree_filename);
+  DrcEvent* evt = new DrcEvent();
+  TClonesArray* particle_array = new TClonesArray("DrcEvent");
+  event_chain->SetBranchAddress("DrcEvent", &particle_array);
+  printf("\n\n Total Entries = %d\n",int(event_chain->GetEntries()));
 
 	//------------- INITIALIZE FastDIRC -----------------//
 
@@ -810,24 +810,24 @@ int main(int nargs, char* argv[])
 
 			locSelectedRegion       = false;
 
-	                evt      = (DrcEvent*) particle_array->At(particle_i);
+      evt      = (DrcEvent*) particle_array->At(particle_i);
 
-               		locInvMass             = evt -> GetInvMass();
-               		locMissingMassSquared  = evt -> GetMissMass();
+   		locInvMass             = evt -> GetInvMass();
+   		locMissingMassSquared  = evt -> GetMissMass();
 			locChiSq               = evt -> GetChiSq();
 			locTofTrackDist        = evt -> GetTofTrackDist();
 			locTofTrackDeltaT      = evt -> GetTofTrackDeltaT();
 			locDcHits              = evt -> GetDcHits();
 
 
-	                particle_p3_tree       = evt->GetMomentum();
-        	        particle_x3_tree       = evt->GetPosition();
-                	particle_pid_tree      = evt->GetPdg();
+      particle_p3_tree       = evt->GetMomentum();
+      particle_x3_tree       = evt->GetPosition();
+    	particle_pid_tree      = evt->GetPdg();
 
-                	particle_bar_tree      = int(evt->GetId());
-                	particle_x_tree     = particle_x3_tree.X();
+    	particle_bar_tree      = int(evt->GetId());
+    	particle_x_tree     = particle_x3_tree.X();
 
-	                particle_mom_tree      = particle_p3_tree.Mag();
+      particle_mom_tree      = particle_p3_tree.Mag();
 
 
 			if (abs(particle_pid_tree)==211)

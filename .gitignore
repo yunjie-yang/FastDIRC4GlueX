@@ -2,9 +2,12 @@ fastdirc_exe
 fastdirc_exe.dSYM
 *.root
 *.csv
+!tree_example.root
 !geometry_files/*.csv
 src/*.d
 src/*.so
 src/*.pcm
-plots/*.pdf
+lib/*.o
+output_plots/*.pdf
+!output_plots
 macros/*.csv
