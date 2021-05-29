@@ -205,8 +205,6 @@ int main(int nargs, char* argv[])
   bool locSouthLower = true;
 
   int locBin_PID = -1;
-  int locBin_X   = -1;
-  int locBin_Bar = -1;
 
   bool locGoodParticle = false;
 

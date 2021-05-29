@@ -12,8 +12,9 @@ This repository hosts the development code for adapting the generic FastDIRC cod
 # Compile FastDIRC to process GlueX DIRC data trees
 There exists a plugin called `dirc_tree` which selects pion and kaon events from rho to pi+pi- and phi to K+K- reactions and create trees. Each entry of the tree is a `DrcEvent` which includes the track information (momentum, position etc.), some combo level information (invariant mass, missing mass squared, number of drift chamber hits etc.) and the PMT hits (specified by `DrcHit` class). Therefore, in order to read such trees, one needs to build the libraries for `DrcEvent` and `DrcHit` classes, and link them during the compilation of FastDIRC.
 
-1. Create the libraries for `DrcEvent` and `DrcHit` classes. First, make sure the `DrcHit.*` and `DrcEvent.*` in the `src` directory are compatible with the trees that you will be processing. Next, go to `src`, and do:
+1. Create the libraries for `DrcEvent` and `DrcHit` classes. First, make sure the `DrcHit.*` and `DrcEvent.*` in the `src` directory are compatible with the trees that you will be processing. Then do:
 ```
+$ cd src
 $ root -l
 $ .L DrcHit.cc+
 $ .L DrcEvent.cc+
@@ -50,4 +51,4 @@ A typical FastDIRC reconstruction workflow has the following steps, using `fastd
 6. In the analysis of those DLLs, `graphicHistos.C` constructs the ROC curve, computes the AUC, and asks what per-track resolution this AUC corresponds to, if it was from two Gaussians separated by the expected Cherenkov angle difference (given the track momentum and the refraction index).
 
 ### Applying offsets and rotations
-In FastDIRC, offsets and rotations are defined _with respect to the nominal model_. The `fastdirc_tree_full_KinBins.cpp` driver shows an example of some available offsets and rotations and how to apply them. The offsets and rotations are set via a bunch of `set_offsets_*` functions defined in `src/dirc_base_sim` for those related to the bar boxes as well as bar box-optical box relative offsets, or in `src/dirc_threesegbox_sim` for those related to the optical box. 
+In FastDIRC, offsets and rotations are defined _with respect to the nominal model_. The `fastdirc_tree_full_KinBins.cpp` driver shows an example of some available offsets and rotations and how to apply them. The offsets and rotations are set via a bunch of `set_offsets_*` functions defined in `src/dirc_base_sim` for those related to the bar boxes as well as bar box-optical box relative offsets, or in `src/dirc_threesegbox_sim` for those related to the optical box.
