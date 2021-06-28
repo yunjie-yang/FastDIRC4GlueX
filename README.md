@@ -1,6 +1,6 @@
 This repository hosts the development code for adapting the generic FastDIRC code (see https://github.com/jmhardin/FastDIRC) for the GlueX DIRC detector.
 
-# Intro and structure
+# Introduction and structure
 * `src` directory: it contains the source code performing the core functions of FastDIRC simulation and reconstruction; the compiled library files will be put into the `lib` directory
 * `geometry_files` directory: it contains two csv files specifying the GlueX DIRC detector geometry in the internal FastDIRC parameterization. `FastDIRC_HDDS_Nominal.csv` is Yunjie Yang's attempt to translate the nominal HDDS geometry into the FastDIRC parameterization, and can be used as the default.
 * `macros` directory: it contains a few macros for post-processing the FastDIRC outputs: creating DLL plots, draw ROC curves, evaluate separation power etc.
